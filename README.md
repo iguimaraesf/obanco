@@ -14,10 +14,7 @@ Os usuários para teste são:
 2. Ela está criptografada na base de dados no campo senha.
 3. A base de dados é o Postgresql, usuário postgres, senha postgres - jdbc:postgresql://localhost:5432/obancobanco
 4. Um certificado digital auto-assinado foi gerado com o nome bootsecurity.p12, acessível pela porta 8483.
-4.1 server.ssl.key-store-password=senha123
-4.2 server.ssl.key-store-type=PKCS12
-4.3 server.ssl.key-alias=bootsecurity
-4.4 server.port=8483
+5. server.ssl.key-store-password=senha123  server.ssl.key-store-type=PKCS12 server.ssl.key-alias=bootsecurity  server.port=8483
 
 # Feito
 1. Login no sistema (POST) - https://localhost:8483/api/v1/onboarding/entrar
