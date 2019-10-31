@@ -1,6 +1,7 @@
 package com.exercicio.banco.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +13,7 @@ public class ContaController {
 	public String extrato() {
 		return "ok - extrato";
 	}
-	@GetMapping("/depositar")
+	@PostMapping("/depositar")
 	public String depositar() {
 		return "depositar";
 	}
@@ -20,7 +21,7 @@ public class ContaController {
 	public String transferir() {
 		return "Transferir";
 	}
-	@PostMapping("/editar")
+	@PatchMapping("/editar")
 	public String editar() {
 		return "editar";
 	}
