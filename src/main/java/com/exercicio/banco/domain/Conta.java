@@ -18,9 +18,9 @@ public class Conta {
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@JoinColumn(name = "correntista_id", referencedColumnName = "id")
 	@JsonBackReference
-	private Usuario user;
+	private Correntista correntista;
 	
 	public Long getId() {
 		return id;
@@ -28,11 +28,11 @@ public class Conta {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Usuario getUser() {
-		return user;
+	public Correntista getCorrentista() {
+		return correntista;
 	}
-	public void setUser(Usuario user) {
-		this.user = user;
+	public void setCorrentista(Correntista user) {
+		this.correntista = user;
 	}
 	
 	@Override

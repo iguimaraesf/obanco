@@ -8,22 +8,22 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.exercicio.banco.domain.Usuario;
+import com.exercicio.banco.domain.Correntista;
 
 public class UserDetailsImpl implements UserDetails {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -8280465498472355525L;
-	private Usuario usuario;
+	private Correntista correntista;
 	
-	public UserDetailsImpl(Usuario usuario) {
-		this.usuario = usuario;
+	public UserDetailsImpl(Correntista usuario) {
+		this.correntista = usuario;
 	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> auth = new ArrayList<>();
-		this.usuario.getRoles().forEach(role -> {
+		this.correntista.getRoles().forEach(role -> {
 			GrantedAuthority a1 = new SimpleGrantedAuthority("ROLE_" + role.getName());
 			auth.add(a1);
 		});
@@ -32,12 +32,12 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return this.usuario.getSenha();
+		return this.correntista.getSenha();
 	}
 
 	@Override
 	public String getUsername() {
-		return this.usuario.getEmail();
+		return this.correntista.getEmail();
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return this.usuario.getAtivo();
+		return this.correntista.getAtivo();
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return this.usuario.getAtivo();
+		return this.correntista.getAtivo();
 	}
 
 }

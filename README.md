@@ -18,7 +18,7 @@ Os usuários para teste são:
 
 # Feito
 1. Login no sistema (POST) - https://localhost:8483/api/v1/onboarding/entrar
-2. Listagem de correntistas (somente Superusuário) (GET) - https://localhost:8483/api/v1/admin/usuarios
+2. Listagem de correntistas (somente Superusuário) (GET) - https://localhost:8483/api/v1/admin/correntistas
 
 # Pendências
 1. Não está verificando se o correntista está ativo ou não.

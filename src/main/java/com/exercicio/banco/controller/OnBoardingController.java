@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exercicio.banco.config.AccountCredentials;
-import com.exercicio.banco.service.UsuarioService;
+import com.exercicio.banco.service.CorrentistaService;
 
 @RestController
 @RequestMapping("api/v1/onboarding")
 public class OnBoardingController {
 	@Autowired
-	private UsuarioService service;
+	private CorrentistaService service;
 	
 	@PostMapping("/entrar")
 	@ResponseBody

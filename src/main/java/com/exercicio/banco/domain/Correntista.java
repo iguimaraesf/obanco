@@ -12,15 +12,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "usuario")
-public class Usuario {
+public class Correntista {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
@@ -58,10 +56,10 @@ public class Usuario {
 	//@JoinColumn(name = "id", referencedColumnName = "user_id")
 	private Set<Conta> contas;
 	
-	public Usuario() {
+	public Correntista() {
 		super();
 	}
-	public Usuario(@NotNull @NotEmpty String nome, @NotNull @NotEmpty String senha, @NotNull @NotEmpty String email,
+	public Correntista(@NotNull @NotEmpty String nome, @NotNull @NotEmpty String senha, @NotNull @NotEmpty String email,
 			@NotNull @NotEmpty Long cpf) {
 		this();
 		this.nome = nome;
@@ -132,10 +130,10 @@ public class Usuario {
 		if (this == obj) {
 			return true;
 		}
-		if (!(obj instanceof Usuario)) {
+		if (!(obj instanceof Correntista)) {
 			return false;
 		}
-		Usuario other = (Usuario) obj;
+		Correntista other = (Correntista) obj;
 		return Objects.equals(email, other.email);
 	}
 	

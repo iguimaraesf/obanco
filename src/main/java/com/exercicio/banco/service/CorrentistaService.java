@@ -5,20 +5,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.exercicio.banco.domain.Usuario;
-import com.exercicio.banco.repository.UserRepository;
+import com.exercicio.banco.domain.Correntista;
+import com.exercicio.banco.repository.CorrentistaRepository;
 
 @Service
-public class UsuarioService {
+public class CorrentistaService {
 
 	@Autowired
-	private UserRepository repository;
+	private CorrentistaRepository repository;
 
-	public List<Usuario> listarTodos() {
+	public List<Correntista> listarTodos() {
 		return this.repository.findAll();
 	}
 
-	public Usuario findByEmail(String email) {
+	public Correntista findByEmail(String email) {
 		return this.repository.findByEmail(email);
 	}
 }
