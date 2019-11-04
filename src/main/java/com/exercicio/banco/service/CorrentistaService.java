@@ -1,7 +1,5 @@
 package com.exercicio.banco.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +12,7 @@ public class CorrentistaService {
 	@Autowired
 	private CorrentistaRepository repository;
 
-	public List<Correntista> listarTodos() {
+	public Iterable<Correntista> listarTodos() {
 		return this.repository.findAll();
 	}
 

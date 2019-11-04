@@ -18,6 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Correntista u = repository.findByEmail(username);
+		if (u == null) throw new UsernameNotFoundException("Correntista inexistente.");
 		UserDetailsImpl principal = new UserDetailsImpl(u);
 		return principal;
 	}

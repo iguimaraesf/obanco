@@ -56,12 +56,12 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 		TokenAuthenticationService.addAuthentication(response, auth.getName(), auth.getAuthorities());
 		//filterChain.doFilter(request, response);
 	}
-	@Override
+	/*@Override
 	protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException failed) throws IOException, ServletException {
 		super.unsuccessfulAuthentication(request, response, failed);
 		throw new ServletException("Falha na autenticação", failed);
-	}
+	}*/
 	
 	
 

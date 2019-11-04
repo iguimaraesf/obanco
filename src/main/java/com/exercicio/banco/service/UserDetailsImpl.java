@@ -47,7 +47,7 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return this.correntista.getAtivo();
+		return true;
 	}
 
 	@Override
