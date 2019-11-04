@@ -39,6 +39,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/api/v1/admin/**").hasRole("ADMIN")
 			// filtro para login
 			.and()
+			/*.exceptionHandling(ex -> {
+				ex.accessDeniedHandler(this.accessDeniedHandler());
+				ex.authenticationEntryPoint(this.authenticationEntryPoint());
+			})*/
+			/*.exceptionHandling().authenticationEntryPoint(this.authenticationEntryPoint())
+			.and()
+			.exceptionHandling().accessDeniedHandler(this.accessDeniedHandler())
+			.and()*/
 			.addFilterBefore(new JWTLoginFilter("/api/v1/onboarding/entrar", super.authenticationManager(), service), UsernamePasswordAuthenticationFilter.class)
 			// verifica JWT
 			.addFilterBefore(new JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
@@ -62,6 +70,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	PasswordEncoder criptografiaDaAplicacao() {
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder;
+	}
+	
+	@Bean
+	RestAccessDeniedHandler accessDeniedHandler() {
+		return new RestAccessDeniedHandler();
+	}
+	
+	@Bean
+	RestAuthenticationEntryPoint authenticationEntryPoint() {
+		return new RestAuthenticationEntryPoint();
 	}
 
 }
