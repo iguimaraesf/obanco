@@ -3,17 +3,17 @@ package com.exercicio.banco.domain;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -37,11 +37,11 @@ public class Correntista {
 
 	@NotNull
 	@NotEmpty
+	@Email
 	@Column(length = 255)
 	private String email;
 	
 	@NotNull
-	@NotEmpty
 	@Column(unique = true)
 	private Long cpf;
 	
@@ -49,24 +49,25 @@ public class Correntista {
 	@Column
 	private Boolean ativo;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<Role> roles;
+	@ManyToMany
+	/*@JoinTable(joinColumns = @JoinColumn(name = "correntista_id"), 
+		inverseJoinColumns = @JoinColumn(name = "papel_id"))*/
+	private Set<Papel> papel;
 	
-	@OneToMany(orphanRemoval = true, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-	//@JoinColumn(name = "id", referencedColumnName = "user_id")
-	private Set<Conta> contas;
+	@ManyToMany
+	private Set<Conta> conta;
 	
 	public Correntista() {
 		super();
+		this.ativo = true;
 	}
-	public Correntista(@NotNull @NotEmpty String nome, @NotNull @NotEmpty String senha, @NotNull @NotEmpty String email,
-			@NotNull @NotEmpty Long cpf) {
+	public Correntista(@NotNull @NotEmpty String nome, @NotNull @NotEmpty String senha, @NotNull @NotEmpty @Email String email,
+			@NotNull @CPF Long cpf) {
 		this();
 		this.nome = nome;
 		this.senha = senha;
 		this.email = email;
 		this.cpf = cpf;
-		this.ativo = true;
 	}
 	public String getNome() {
 		return nome;
@@ -94,18 +95,18 @@ public class Correntista {
 	}
 	
 	
-	public Set<Role> getRoles() {
-		return roles;
+	public Set<Papel> getPapel() {
+		return papel;
 	}
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
+	public void setPapel(Set<Papel> roles) {
+		this.papel = roles;
 	}
 	
-	public Set<Conta> getContas() {
-		return contas;
+	public Set<Conta> getConta() {
+		return conta;
 	}
-	public void setContas(Set<Conta> contas) {
-		this.contas = contas;
+	public void setConta(Set<Conta> contas) {
+		this.conta = contas;
 	}
 	
 	public Long getCpf() {

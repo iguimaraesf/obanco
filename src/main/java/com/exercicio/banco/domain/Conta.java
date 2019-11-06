@@ -1,13 +1,13 @@
 package com.exercicio.banco.domain;
 
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -17,10 +17,9 @@ public class Conta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne
-	@JoinColumn(name = "correntista_id", referencedColumnName = "id")
+	@ManyToMany(mappedBy = "conta")
 	@JsonBackReference
-	private Correntista correntista;
+	private Set<Correntista> correntista;
 	
 	public Long getId() {
 		return id;
@@ -28,10 +27,10 @@ public class Conta {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Correntista getCorrentista() {
+	public Set<Correntista> getCorrentista() {
 		return correntista;
 	}
-	public void setCorrentista(Correntista user) {
+	public void setCorrentista(Set<Correntista> user) {
 		this.correntista = user;
 	}
 	

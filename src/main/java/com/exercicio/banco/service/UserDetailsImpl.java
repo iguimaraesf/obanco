@@ -16,18 +16,19 @@ public class UserDetailsImpl implements UserDetails {
 	 */
 	private static final long serialVersionUID = -8280465498472355525L;
 	private Correntista correntista;
+	private List<GrantedAuthority> auth;
 	
 	public UserDetailsImpl(Correntista usuario) {
 		this.correntista = usuario;
-	}
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> auth = new ArrayList<>();
-		this.correntista.getRoles().forEach(role -> {
+		this.correntista.getPapel().forEach(role -> {
 			GrantedAuthority a1 = new SimpleGrantedAuthority("ROLE_" + role.getName());
 			auth.add(a1);
 		});
-		return auth;
+	}
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.auth;
 	}
 
 	@Override

@@ -8,7 +8,7 @@ INSERT INTO papel (name) VALUES
 ('USER'),
 ('ADMIN');
 
-INSERT INTO correntista_roles (correntistas_id, roles_id) VALUES
+INSERT INTO correntista_papel (correntista_id, papel_id) VALUES
 (1, 1),
 (2, 1),
 (3, 1),

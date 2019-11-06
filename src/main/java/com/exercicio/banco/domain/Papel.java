@@ -3,10 +3,8 @@ package com.exercicio.banco.domain;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,9 +15,9 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-@Entity(name = "role")
+@Entity(name = "papel")
 @Table(name = "papel")
-public class Role {
+public class Papel {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,9 +27,9 @@ public class Role {
 	@Column(length = 30)
     private String name;
 
-    @ManyToMany(mappedBy = "roles", cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "papel")
     @JsonBackReference
-    private Set<Correntista> correntistas;
+    private Set<Correntista> correntista;
 
     public Long getId() {
         return id;
@@ -49,12 +47,12 @@ public class Role {
         this.name = name;
     }
 
-    public Set<Correntista> getCorrentistas() {
-        return correntistas;
+    public Set<Correntista> getCorrentista() {
+        return correntista;
     }
 
-    public void setCorrentistas(Set<Correntista> users) {
-        this.correntistas = users;
+    public void setCorrentista(Set<Correntista> users) {
+        this.correntista = users;
     }
 
 	@Override
@@ -67,10 +65,10 @@ public class Role {
 		if (this == obj) {
 			return true;
 		}
-		if (!(obj instanceof Role)) {
+		if (!(obj instanceof Papel)) {
 			return false;
 		}
-		Role other = (Role) obj;
+		Papel other = (Papel) obj;
 		return Objects.equals(id, other.id);
 	}
     

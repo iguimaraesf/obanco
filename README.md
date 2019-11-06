@@ -20,11 +20,12 @@ Os usuários para teste são:
 1. Login no sistema (POST) - https://localhost:8483/api/v1/onboarding/entrar
 2. Listagem de correntistas (somente Superusuário) (GET) - https://localhost:8483/api/v1/admin/correntistas
 3. Verificação: correntista está ativo ou não.
+4. Exclusão de correntistas (somente Superusuário) (DELETE) - https://localhost:8483/api/v1/admin/correntistas/{id}
+5. Abertura de conta (POST) - https://localhost:8483/api/v1/onboarding/criar 
+6. Ativar/Desativar correntista (somente Superusuário) (PATCH) - https://localhost:8483/api/v1/admin/correntistas/ativar/{id} (PATCH) - https://localhost:8483/api/v1/admin/correntistas/desativar/{id}
 
 # Pendências
-1. Abertura de conta (POST) - https://localhost:8483/api/v1/onboarding/criar
-2. Ativar/Desativar correntista (somente Superusuário) (PATCH) - https://localhost:8483/api/v1/admin/usuarios
-3. Extrato (Correntista) (GET) - https://localhost:8483/api/v1/conta/extrato
-4. Depósito (POST) - https://localhost:8483/api/v1/conta/depositar
-5. Transferência (POST) - https://localhost:8483/api/v1/conta/transferir
-6. Alterar dados pessoais (PATCH) - https://localhost:8483/api/v1/conta/editar
+. Extrato (Correntista) (GET) - https://localhost:8483/api/v1/conta/extrato/{numero}
+. Depósito (POST) - https://localhost:8483/api/v1/conta/depositar/{numero}
+. Transferência (POST) - https://localhost:8483/api/v1/conta/transferir/{numero}
+. Alterar dados pessoais (PATCH) - https://localhost:8483/api/v1/conta/editar
