@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity(name = "papel")
@@ -25,6 +27,7 @@ public class Papel {
 	@NotNull
 	@NotEmpty
 	@Column(length = 30)
+	@Length(min = 1, max = 30)
     private String name;
 
 	@ManyToMany(mappedBy = "papel")

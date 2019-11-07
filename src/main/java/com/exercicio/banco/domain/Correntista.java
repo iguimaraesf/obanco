@@ -14,6 +14,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,6 +28,7 @@ public class Correntista {
 
 	@NotNull
 	@NotEmpty
+	@Length(min = 1, max = 200)
 	@Column(length = 200)
 	private String nome;
 
@@ -39,6 +41,7 @@ public class Correntista {
 	@NotNull
 	@NotEmpty
 	@Email
+	@Length(min = 0, max = 255)
 	@Column(length = 255)
 	private String email;
 	

@@ -1,12 +1,14 @@
 package com.exercicio.banco.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,23 +23,19 @@ public class ContaController {
 	@Autowired
 	private ContaCorrenteService service;
 
-	@GetMapping("/extrato")
-	public String extrato() {
-		return "ok - extrato";
+	@GetMapping("/extrato/{conta}")
+	public List<HistoricoBean> extrato(@PathVariable final Long conta) throws Exception {
+		return service.extrato(conta);
 	}
 	@PostMapping("/depositar")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@Validated
-	public SaldoBean depositar(@Valid @RequestBody final DepositoBean deposito) throws Exception {
+	public SaldoBean depositar(@RequestBody @Valid final DepositoBean deposito) throws Exception {
 		return service.depositar(deposito);
 	}
 	@PostMapping("/transferir")
-	public String transferir() {
-		return "Transferir";
-	}
-	@PatchMapping("/editar")
-	public String editar() {
-		return "editar";
+	public SaldoBean transferir(@RequestBody @Valid final TransferenciaBean transf) throws Exception {
+		return service.transferir(transf);
 	}
 
 }

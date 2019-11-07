@@ -1,9 +1,7 @@
 package com.exercicio.banco.controller;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Future;
@@ -13,11 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 
-public class DepositoBean implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4272698415696979960L;
+public class DepositoBean {
 	@NotNull
 	private Long contaDestino;
 	@DecimalMin(value = "0.01")
@@ -64,26 +58,5 @@ public class DepositoBean implements Serializable {
 	public void setCvv(Integer cvv) {
 		this.cvv = cvv;
 	}
-	@Override
-	public String toString() {
-		return "DepositoBean [contaDestino=" + contaDestino + ", valor=" + valor + ", cartaoCredito=" + cartaoCredito
-				+ ", dataValidade=" + dataValidade + ", cvv=" + cvv + "]";
-	}
-	@Override
-	public int hashCode() {
-		return Objects.hash(contaDestino, valor);
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof DepositoBean)) {
-			return false;
-		}
-		DepositoBean other = (DepositoBean) obj;
-		return Objects.equals(contaDestino, other.contaDestino) && Objects.equals(valor, other.valor);
-	}
-
 
 }

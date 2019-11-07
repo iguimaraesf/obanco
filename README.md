@@ -3,7 +3,7 @@ Permite abrir a conta corrente, fazer transferências entre contas e fazer depó
 O usuário administrador pode listar os correntistas, e ativar/desativar um correntista.
 
 # Dados técnicos
-Os usuários para teste são:
+Os usuários para teste são sempre inicializados desta forma:
 1. mariazinha@email.com - Correntista
 2. joaozinho@email.com - Correntista
 3. mestre@email.com - Superusuário
@@ -23,9 +23,9 @@ Os usuários para teste são:
 4. Exclusão de correntistas (somente Superusuário) (DELETE) - https://localhost:8483/api/v1/admin/correntistas/{id}
 5. Abertura de conta (POST) - https://localhost:8483/api/v1/onboarding/criar 
 6. Ativar/Desativar correntista (somente Superusuário) (PATCH) - https://localhost:8483/api/v1/admin/correntistas/ativar/{id} (PATCH) - https://localhost:8483/api/v1/admin/correntistas/desativar/{id}
+7. Depósito (Correntista) (POST) - https://localhost:8483/api/v1/conta/depositar
+8. Transferência (Correntista) (POST) - https://localhost:8483/api/v1/conta/transferir
+9. Extrato (Correntista) (GET) - https://localhost:8483/api/v1/conta/extrato/{conta}
+10. Alterar dados pessoais (Correntista) (PATCH) - https://localhost:8483/api/v1/onboarding/editar
 
 # Pendências
-. Depósito (POST) - https://localhost:8483/api/v1/conta/depositar
-. Transferência (POST) - https://localhost:8483/api/v1/conta/transferir
-. Extrato (Correntista) (GET) - https://localhost:8483/api/v1/conta/extrato
-. Alterar dados pessoais (PATCH) - https://localhost:8483/api/v1/conta/editar

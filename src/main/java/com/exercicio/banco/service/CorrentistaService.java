@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,12 +13,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.exercicio.banco.controller.PerfilBean;
 import com.exercicio.banco.domain.Conta;
 import com.exercicio.banco.domain.Correntista;
 import com.exercicio.banco.domain.Papel;
+import com.exercicio.banco.exception.BancoException;
 import com.exercicio.banco.repository.ContaRepository;
 import com.exercicio.banco.repository.CorrentistaRepository;
 import com.exercicio.banco.repository.PapelRepository;
+import com.exercicio.banco.util.DadosGlobais;
 
 @Service
 public class CorrentistaService {
@@ -27,6 +32,8 @@ public class CorrentistaService {
 	private PapelRepository rRepo;
 	@Autowired
 	private ContaRepository rConta;
+	@Autowired
+	private DadosGlobais dadosGlobais;
 
 	public Iterable<Correntista> listarTodos() {
 		return this.repository.findAll();
@@ -91,6 +98,22 @@ public class CorrentistaService {
 		});
 		if (c.isEmpty()) return null;
 		return c.get();
+	}
+
+	public String atualizarCorrentista(@Valid PerfilBean cad) throws BancoException {
+		String res = null;
+		if (cad != null) {
+			Correntista correntista = dadosGlobais.correntistaAtual();
+			if (cad.getNome() != null) correntista.setNome(cad.getNome());
+			if (cad.getSenha() != null) {
+				String novaSenha = this.encoder().encode(cad.getSenha());
+				//System.out.println(novaSenha);
+				correntista.setSenha(novaSenha);
+			}
+			res = correntista.getNome();
+			this.repository.save(correntista);
+		}
+		return res;
 	}
 
 }

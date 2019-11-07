@@ -22,5 +22,5 @@ INSERT INTO conta (correntista_id) VALUES
 (3);
 
 INSERT INTO historico (hora, conta_id, valor, descricao) VALUES
-(clock_timestamp(), 1, 1000, 'Saldo de teste do admin'),
-(clock_timestamp(), 3, 199, 'Saldo de teste do admin');
+(clock_timestamp(), 3, 1000, 'Saldo de teste do admin'),
+(clock_timestamp(), 1, 199, 'Teste inicial');

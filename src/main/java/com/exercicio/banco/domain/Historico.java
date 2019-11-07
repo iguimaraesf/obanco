@@ -2,8 +2,11 @@ package com.exercicio.banco.domain;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+
+import org.hibernate.validator.constraints.Length;
 
 import com.sun.istack.NotNull;
 
@@ -15,6 +18,8 @@ public class Historico {
 	private HistoricoPK id;
 	@NotNull
 	private BigDecimal valor;
+	@Length(min = 0, max = 255)
+	@Column(length = 255)
 	private String descricao;
 	
 	public Historico() {
