@@ -4,26 +4,47 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.istack.NotNull;
 
 @Embeddable
 public class HistoricoPK implements Serializable {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -2922567694894075955L;
-
-	@Column(name = "datahora")
-	private LocalDateTime dataHora;
-	@Column(name = "conta")
+	private static final long serialVersionUID = 6361821041235823314L;
+	
+	@NotNull
+	private LocalDateTime hora;
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "conta_id", referencedColumnName = "id")
+	@JsonBackReference
 	private Conta conta;
 
-	public LocalDateTime getDataHora() {
-		return dataHora;
+	public HistoricoPK() {
+		
 	}
-	public void setDataHora(LocalDateTime dataHora) {
-		this.dataHora = dataHora;
+	public HistoricoPK(LocalDateTime hora, Conta conta) {
+		this();
+		this.hora = hora;
+		this.conta = conta;
+	}
+	
+	public HistoricoPK(Conta conta) {
+		this(LocalDateTime.now(), conta);
+	}
+
+	public LocalDateTime getHora() {
+		return hora;
+	}
+	public void setHora(LocalDateTime dataHora) {
+		this.hora = dataHora;
 	}
 	public Conta getConta() {
 		return conta;
@@ -33,7 +54,7 @@ public class HistoricoPK implements Serializable {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(conta, dataHora);
+		return Objects.hash(conta, hora);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -44,7 +65,7 @@ public class HistoricoPK implements Serializable {
 			return false;
 		}
 		HistoricoPK other = (HistoricoPK) obj;
-		return Objects.equals(conta, other.conta) && Objects.equals(dataHora, other.dataHora);
+		return Objects.equals(conta, other.conta) && Objects.equals(hora, other.hora);
 	}
 	
 	

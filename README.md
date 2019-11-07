@@ -25,7 +25,7 @@ Os usuários para teste são:
 6. Ativar/Desativar correntista (somente Superusuário) (PATCH) - https://localhost:8483/api/v1/admin/correntistas/ativar/{id} (PATCH) - https://localhost:8483/api/v1/admin/correntistas/desativar/{id}
 
 # Pendências
-. Extrato (Correntista) (GET) - https://localhost:8483/api/v1/conta/extrato/{numero}
-. Depósito (POST) - https://localhost:8483/api/v1/conta/depositar/{numero}
-. Transferência (POST) - https://localhost:8483/api/v1/conta/transferir/{numero}
+. Depósito (POST) - https://localhost:8483/api/v1/conta/depositar
+. Transferência (POST) - https://localhost:8483/api/v1/conta/transferir
+. Extrato (Correntista) (GET) - https://localhost:8483/api/v1/conta/extrato
 . Alterar dados pessoais (PATCH) - https://localhost:8483/api/v1/conta/editar

@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -17,23 +18,31 @@ public class Conta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToMany(mappedBy = "conta")
+	@ManyToOne
 	@JsonBackReference
-	private Set<Correntista> correntista;
+	private Correntista correntista;
 	
+	@OneToMany(mappedBy = "id.conta")
+	private Set<Historico> historico;
+
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Set<Correntista> getCorrentista() {
+	public Correntista getCorrentista() {
 		return correntista;
 	}
-	public void setCorrentista(Set<Correntista> user) {
+	public void setCorrentista(Correntista user) {
 		this.correntista = user;
 	}
-	
+	public Set<Historico> getHistorico() {
+		return historico;
+	}
+	public void setHistorico(Set<Historico> historico) {
+		this.historico = historico;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
