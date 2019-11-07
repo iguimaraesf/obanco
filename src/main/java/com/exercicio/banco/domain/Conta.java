@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -19,6 +20,7 @@ public class Conta {
 	private Long id;
 	
 	@ManyToOne
+	@JoinColumn
 	@JsonBackReference
 	private Correntista correntista;
 	

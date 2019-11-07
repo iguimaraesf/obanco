@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,8 @@ public class ContaController {
 	}
 	@PostMapping("/depositar")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public SaldoBean depositar(@Valid @RequestBody DepositoBean deposito) throws Exception {
+	@Validated
+	public SaldoBean depositar(@Valid @RequestBody final DepositoBean deposito) throws Exception {
 		return service.depositar(deposito);
 	}
 	@PostMapping("/transferir")

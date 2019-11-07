@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.exercicio.banco.domain.Conta;
 import com.exercicio.banco.domain.Correntista;
@@ -35,6 +36,7 @@ public class CorrentistaService {
 		return this.repository.findByEmail(email);
 	}
 	
+	@Transactional
 	public Correntista criarCorrentistaEConta(Correntista correntistaParam) {
 		Correntista correntista = repository.findByCpf(correntistaParam.getCpf());
 		if (correntista == null) {

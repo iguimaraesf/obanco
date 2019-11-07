@@ -14,3 +14,13 @@ INSERT INTO correntista_papel (correntista_id, papel_id) VALUES
 (3, 1),
 (3, 2),
 (4, 1);
+
+INSERT INTO conta (correntista_id) VALUES
+(1),
+(2),
+(3),
+(3);
+
+INSERT INTO historico (hora, conta_id, valor, descricao) VALUES
+(clock_timestamp(), 1, 1000, 'Saldo de teste do admin'),
+(clock_timestamp(), 3, 199, 'Saldo de teste do admin');

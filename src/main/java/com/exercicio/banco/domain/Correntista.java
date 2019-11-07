@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -54,7 +55,7 @@ public class Correntista {
 		inverseJoinColumns = @JoinColumn(name = "papel_id"))*/
 	private Set<Papel> papel;
 	
-	@ManyToMany
+	@OneToMany(mappedBy = "correntista")
 	private Set<Conta> conta;
 	
 	public Correntista() {
